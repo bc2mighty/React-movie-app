@@ -44,12 +44,21 @@ function MovieListPage() {
 
     const movieItems = movies.map((movie, index) => {
         return (
-            <div key={index}>
-                <img src={movie.Poster}/>
-                <h3>{movie.Title}</h3>
-                <NavLink to={`/${movie.imdbID}`}>
-                    <button>Details</button>
-                </NavLink>
+            <div className="col" key={index}>
+                <div className="card shadow-sm">
+                    <img className="bd-placeholder-img card-img-top" src={movie.Poster}/>
+                    <div className="card-body">
+                        <h3>{movie.Title}</h3>
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div className="btn-group">
+                                <NavLink to={`/${movie.imdbID}`}>
+                                    <button type="button" className="btn btn-sm btn-outline-secondary">Details</button>
+                                </NavLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         )
     })
@@ -71,10 +80,16 @@ function MovieListPage() {
                 </div>
                 </div>
             </section>
-            {movieItems}
-            {noMoviesFound ? <h1>No Movies Found</h1> : null}
+            <div className="album py-5 bg-light">
+                <div className="container">
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        {movieItems}
+                        {noMoviesFound ? <h1>No Movies Found</h1> : null}
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
 
-export default MovieListPage
+export default MovieListPage;
