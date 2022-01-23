@@ -56,12 +56,21 @@ function MovieListPage() {
 
     return (
         <div>
-            <h1>MovieListPage</h1>
-            Search: <input type="text" onChange={handleSearchTerm}/>
-            &nbsp;&nbsp;&nbsp;
-            <button onClick={() => fetchMovies(searchTerm)}>Search</button>
-            &nbsp;&nbsp;&nbsp;
-            <button onClick={clearResults}>Clear Results</button>
+            <section className="py-5 text-center container">
+                <div className="row py-lg-5">
+                <div className="col-lg-6 col-md-8 mx-auto">
+                    <h1 className="fw-light">Movie Search</h1>
+                    <p className="lead text-muted">Let's help you search for some awesome movies.</p>
+                    <p>
+                        <input type="text" value={searchTerm} className="form-control" onChange={handleSearchTerm} placeholder="Search for Movie"/>
+                    </p>
+                    <p>
+                        <button className="btn btn-primary my-2 me-2" onClick={() => fetchMovies(searchTerm)}>Search</button>
+                        <button className="btn btn-secondary my-2" onClick={clearResults}>Clear Results</button>
+                    </p>
+                </div>
+                </div>
+            </section>
             {movieItems}
             {noMoviesFound ? <h1>No Movies Found</h1> : null}
         </div>
