@@ -22,7 +22,10 @@ function MovieListPage() {
         fetch(searchUrl)
             .then(response => response.json())
             .then(result => {
-                console.log(result)
+                if (result.Error) {
+                    setMovies([])
+                    return false
+                }
                 setMovies(result.Search)
             })
             .catch(err => {
