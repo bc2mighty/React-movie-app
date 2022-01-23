@@ -33,7 +33,6 @@ function MovieDetailPage() {
             <p>Writer: {movieDetail.Writer}</p>
             <p>Actors: {movieDetail.Actors}</p>
             <p>Awards: {movieDetail.Awards}</p>
-            <h1>Movie Details Page</h1>
         </div>
     )
 }

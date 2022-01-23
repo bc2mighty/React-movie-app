@@ -1,9 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 
 function MovieListPage() {
     const [searchTerm, setSearchTerm] = useState('')
     const [movies, setMovies] = useState([])
+
+    useEffect(() => {
+        let term = localStorage.getItem("searchTerm")
+        if (term) {
+            fetchMovies(term)
+        }
+    }, [])
 
     const handleSearchTerm = (e) => {
         setSearchTerm(e.target.value)
@@ -11,6 +18,7 @@ function MovieListPage() {
 
     const fetchMovies = (movieName) => {
         const searchUrl = `https://www.omdbapi.com/?s=${movieName}&apikey=bc9a9b07`
+        localStorage.setItem("searchTerm", movieName)
         fetch(searchUrl)
             .then(response => response.json())
             .then(result => {
