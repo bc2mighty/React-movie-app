@@ -30,6 +30,12 @@ function MovieListPage() {
             })
     }
 
+    const clearResults = () => {
+        setMovies([])
+        setSearchTerm('')
+        localStorage.removeItem("searchTerm")
+    }
+
     const movieItems = movies.map((movie, index) => {
         return (
             <div key={index}>
@@ -46,7 +52,10 @@ function MovieListPage() {
         <div>
             <h1>MovieListPage</h1>
             Search: <input type="text" onChange={handleSearchTerm}/>
+            &nbsp;&nbsp;&nbsp;
             <button onClick={() => fetchMovies(searchTerm)}>Search</button>
+            &nbsp;&nbsp;&nbsp;
+            <button onClick={clearResults}>Clear Results</button>
             {movieItems}
         </div>
     )
